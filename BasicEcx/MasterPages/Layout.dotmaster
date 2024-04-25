@@ -1,0 +1,44 @@
+﻿@viewModel BasicEcx.MasterPages.LayoutViewModel, BasicEcx
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
+    <dot:RequiredResource Name="bootstrap" />
+    <dot:RequiredResource Name="Styles" />
+
+    <%-- Page specific header elements --%>
+    <dot:ContentPlaceHolder ID="HeaderContent" />
+</head>
+<body>
+
+    <div class="headerBar fixed-top py-0"><h3>Top Bar takes up this space</h3></div>
+
+    <div class="wrapper d-flex align-items-stretch" ID="mainWrap">
+
+        <div class="sideBar">
+            <h4 style="transform: rotate(-90deg);">Side Bar takes up this space</h4>
+        </div>
+
+        <div ID="PageContent">
+            <div ID="TopContentWrap" class="TopContentWrap">
+                <%--<ecx:MessageBox ID="MessageBox" DataContext="{value: MessageBox}" Visible="{value: _parent.ShowMessageBox}" Visible="{value: _page.EvaluatingOnClient}" />--%>
+                <ecx:TitleBar ID="TitleBar" DataContext="{value: TitleBar}" <%--IncludeInPage="{resource: _parent.ShowTitleBar}"--%> />
+                <%--<ecx:ViewBar ID="ViewBar" IncludeInPage="{resource: ShowViewBar}" />--%>
+            </div>
+            <div ID="ContentWrap" style="padding-top: 60px;">
+                <dot:ContentPlaceHolder ID="LayoutMainContent" />
+            </div>
+        </div>
+
+
+    </div>
+
+    <dot:ContentPlaceHolder ID="PageSpecificJavaScriptContent" />
+</body>
+</html>
+
+

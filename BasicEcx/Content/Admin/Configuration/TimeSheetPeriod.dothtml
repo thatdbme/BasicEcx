@@ -1,0 +1,16 @@
+﻿@viewModel BasicEcx.Content.Admin.Configuration.TimeSheetPeriodViewModel, BasicEcx
+@masterPage Content/Admin/_Admin.dotmaster
+
+<dot:Content ContentPlaceHolderID="HeaderContent">
+
+
+</dot:Content>
+<dot:Content ContentPlaceHolderID="AdminContent">
+    
+
+</dot:Content>
+<dot:Content ContentPlaceHolderID="PageSpecificJavaScriptContent">
+
+
+</dot:Content>
+
