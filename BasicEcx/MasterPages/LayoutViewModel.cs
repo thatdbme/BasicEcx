@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BasicEcx.Controls.Page;
 using DotVVM.Framework.ViewModel;
-using DotVVM.Framework.Hosting;
-using BasicEcx.Controls.Page;
+using System.Threading.Tasks;
 
 namespace BasicEcx.MasterPages
 {

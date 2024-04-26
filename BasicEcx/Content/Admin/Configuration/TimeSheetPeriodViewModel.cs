@@ -13,7 +13,7 @@ namespace BasicEcx.Content.Admin.Configuration
         #region Fields & Constants
 
         private FakeController _controller;
-        //private IToolPresenter _presenter;
+        //private FakePresenter _presenter;
 
         private const int BUTTON_EVENT_CODE_CANCEL = 1;
         private const int BUTTON_EVENT_CODE_SUBMIT = 2;
@@ -90,7 +90,7 @@ namespace BasicEcx.Content.Admin.Configuration
         /// </summary>
         protected void ActionCancel()
         {
-            var url = "/Default"; //Navigation.Tool.ToolList();
+            var url = "/"; //Navigation.Tool.ToolList();
 
             Context.RedirectToLocalUrl(url); //NavigationHelper.NavigateToDvm(Context, url);
         }
@@ -126,7 +126,7 @@ namespace BasicEcx.Content.Admin.Configuration
         }
 
         /// <summary>
-        /// Map the page properties to a <see cref="Model.TimeSheetPeriodViewModel"/>.
+        /// Map the page properties to a <see cref="TimeSheetPeriodModel"/>.
         /// </summary>
         private TimeSheetPeriodModel MapPageToViewModel()
         {
@@ -143,7 +143,7 @@ namespace BasicEcx.Content.Admin.Configuration
         }
 
         /// <summary>
-        /// Map the retrieved <see cref="Model.TimeSheetPeriodViewModel"/> to the local viewmodel.
+        /// Map the retrieved <see cref="TimeSheetPeriodModel"/> to the local viewmodel.
         /// </summary>
         /// <param name="viewModel">The viewmodel retrieved from the DB.</param>
         private void MapViewModelToPage(TimeSheetPeriodModel viewModel)
@@ -185,10 +185,7 @@ namespace BasicEcx.Content.Admin.Configuration
 
     public class FakeController
     {
-        public void CreateTimesheetPeriod(TimeSheetPeriodModel dummy)
-        {
-            
-        }
+        public void CreateTimesheetPeriod(TimeSheetPeriodModel dummy){}
 
         public TimeSheetPeriodModel GetTimeSheetPeriod(bool dummy)
         {

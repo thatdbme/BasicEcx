@@ -1,5 +1,4 @@
 ﻿@viewModel BasicEcx.Controls.Page.TitleBarViewModel, BasicEcx
-<%--@baseType Econometrix.Web.Dotvvm.Controls.Page.TitleBar, Econometrix.Web--%>
 
 <!-- Start of TitleBar.dotcontrol -->
 
