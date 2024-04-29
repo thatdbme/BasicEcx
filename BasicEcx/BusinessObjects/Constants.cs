@@ -9,10 +9,10 @@ namespace BasicEcx.BusinessObjects
     {
         public class TimeSheetFrequency
         {
-            public const int BI_WEEKLY = 3;
-            public const int MONTHLY = 2;
-            public const int SEMI_MONTHLY = 4;
             public const int WEEKLY = 1;
+            public const int MONTHLY = 2;
+            public const int BI_WEEKLY = 3;
+            public const int SEMI_MONTHLY = 4;
         }
     }
 }
