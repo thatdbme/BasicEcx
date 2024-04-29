@@ -1,0 +1,27 @@
+@viewModel BasicEcx.Controls.Fields.ComboBox.Model.FieldComboBoxViewModel, BasicEcx
+@baseType BasicEcx.Controls.Fields.ComboBox.FieldComboBox, BasicEcx
+
+@noWrapperTag !
+<!-- Begin FieldComboBox ToDo DVM: Remove this comment -->
+<div class="row align-items-baseline mt-1 mb-1"
+     Validator.InvalidCssClass="has-error"
+     Validator.Value="{value: SelectedValue}">
+    <div class="col-sm-4 col-md-3 col-xl-2 text-sm-right" style="">
+        <span class="field-label">{{resource: LabelText}}</span>
+    </div>
+    <div class="col-sm-8 col-md-9 col-xl-10" style="">
+        <bp:ComboBox ID="Frequency"
+                     DataSource="{value: DataSource}"
+                     SelectedValue="{value: SelectedValue}"
+                     ItemValueBinding="{value: Value}"
+                     ItemTextBinding="{value: Text}"
+                     Placeholder="{resource: PlaceholderText}"
+                     AllowUnselect="{resource: AllowUnselect}" />
+        <dot:Validator Value="{value: SelectedValue}">
+            <span Visible="{value: IsRequired && SelectedValue != null}">*</span>
+        </dot:Validator>
+        <span class="validation-label label-danger"
+              Visible="{value: IsRequired && SelectedValue == null}">{{resource: RequiredText}}</span>
+    </div>
+</div>
+<!-- End FieldComboBox ToDo DVM: Remove this comment -->

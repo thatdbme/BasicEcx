@@ -1,14 +1,17 @@
 ﻿using BasicEcx.BusinessObjects;
+using BasicEcx.Controls.Fields.ComboBox.Model;
+using BasicEcx.Controls.Fields.Date.Model;
 using BasicEcx.Models;
+using BasicEcx.Shared;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 
 namespace BasicEcx.Content.Admin.Configuration
 {
-    public class TimeSheetPeriodViewModel : BasicEcx.Content.Admin._AdminViewModel
+    public class TimeSheetPeriodViewModel : _AdminViewModel, IValidatableObject
     {
         #region Fields & Constants
 
@@ -19,6 +22,23 @@ namespace BasicEcx.Content.Admin.Configuration
         private const int BUTTON_EVENT_CODE_SUBMIT = 2;
 
         #endregion Fields & Constants
+
+        #region ViewModel Properties
+
+        public FieldDateViewModel StartDate { get; set; }
+            = new FieldDateViewModel("Start Date", true);
+
+        public FieldDateViewModel EndDate { get; set; }
+            = new FieldDateViewModel("End Date", true);
+
+
+        public FieldComboBoxViewModel Frequency { get; set; }
+            = new FieldComboBoxViewModel("Frequency");
+
+        public FieldComboBoxViewModel Cycle { get; set; }
+            = new FieldComboBoxViewModel("Cycle", true);
+
+        #endregion ViewModel Properties
 
         #region Override Methods
 
@@ -52,11 +72,26 @@ namespace BasicEcx.Content.Admin.Configuration
 
             if (!Context.IsPostBack)
             {
-                var viewModel = _controller.GetTimeSheetPeriod(true);
+                var viewModel = _controller.GetTimesheetPeriod(true);
                 MapViewModelToPage(viewModel);
             }
 
             return base.Load();
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            /*
+             * The Validate() method gets called when one of the set of two buttons is clicked but is not being called
+             * when the first one is called. Validation is not being run at all.
+             */
+            if (StartDate.SelectedDate >= EndDate.SelectedDate)
+            {
+                yield return new ValidationResult(
+                    "End Date must be greater than Start Date",
+                    new[] { "/StartDate/SelectedDate", "/EndDate/SelectedDate" }
+                );
+            }
         }
 
         #endregion Page Lifecycle Methods
@@ -107,7 +142,7 @@ namespace BasicEcx.Content.Admin.Configuration
 
             _controller.CreateTimesheetPeriod(viewModel);
 
-            // ToDo: use the messagebox to show success message
+            // In the real application, the next page displays a success message.
             //NavigationHelper.NavigateToWithMessageDvm(Context, Navigation.Tool.ToolList(),
             //    ToolResourcing.TimesheetPeriodCreatedMessage);
         }
@@ -130,13 +165,17 @@ namespace BasicEcx.Content.Admin.Configuration
         /// </summary>
         private TimeSheetPeriodModel MapPageToViewModel()
         {
+            /*
+             * We should not be getting here without executing the Validate() method first but we are
+             * when using the Decoy object. It does not execute Validate().
+             */
             var model = new TimeSheetPeriodModel
             {
-                //EndDate = EndDate.SelectedDate.Value,
-                //StartDate = StartDate.SelectedDate.Value,
+                EndDate = EndDate.SelectedDate.Value,
+                StartDate = StartDate.SelectedDate.Value,
 
-                //TimeSheetCycleId = Convert.ToInt32(Cycle.SelectedValue),
-                //TimeSheetFrequencyId = Convert.ToInt32(Frequency.SelectedValue)
+                TimeSheetCycleId = Convert.ToInt32(Cycle.SelectedValue),
+                TimeSheetFrequencyId = Convert.ToInt32(Frequency.SelectedValue)
             };
 
             return model;
@@ -148,15 +187,15 @@ namespace BasicEcx.Content.Admin.Configuration
         /// <param name="viewModel">The viewmodel retrieved from the DB.</param>
         private void MapViewModelToPage(TimeSheetPeriodModel viewModel)
         {
-            //StartDate.SelectedDate = viewModel.StartDate;
-            //EndDate.SelectedDate = viewModel.EndDate;
+            StartDate.SelectedDate = viewModel.StartDate;
+            EndDate.SelectedDate = viewModel.EndDate;
 
-            //Frequency.DataSource = MapDictionaryToMenuItems(viewModel.TimeSheetFrequencyList);
-            //Frequency.SelectedValue = viewModel.TimeSheetFrequencyId.ToString();
+            Frequency.DataSource = MapDictionaryToMenuItems(viewModel.TimeSheetFrequencyList);
+            Frequency.SelectedValue = viewModel.TimeSheetFrequencyId.ToString();
 
-            //Cycle.DataSource = MapDictionaryToMenuItems(viewModel.TimeSheetCycleList);
-            
-            //Cycle.SelectedValue = Cycle.DataSource.FirstOrDefault()?.Value;
+            Cycle.DataSource = MapDictionaryToMenuItems(viewModel.TimeSheetCycleList);
+
+            Cycle.SelectedValue = Cycle.DataSource.FirstOrDefault()?.Value;
         }
 
         /// <summary>
@@ -187,7 +226,7 @@ namespace BasicEcx.Content.Admin.Configuration
     {
         public void CreateTimesheetPeriod(TimeSheetPeriodModel dummy){}
 
-        public TimeSheetPeriodModel GetTimeSheetPeriod(bool dummy)
+        public TimeSheetPeriodModel GetTimesheetPeriod(bool dummy)
         {
             var model = new TimeSheetPeriodModel
             {

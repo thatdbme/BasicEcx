@@ -24,6 +24,11 @@ namespace BasicEcx.Controls.Page
         #region Public Properties
 
         /// <summary>
+        /// Fake object to bypass validation.
+        /// </summary>
+        public object Decoy { get; set; } = new object();
+
+        /// <summary>
         /// The list of More Actions.
         /// </summary>
         [Bind(Direction.ServerToClient)]

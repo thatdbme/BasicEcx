@@ -8,6 +8,16 @@ namespace BasicEcx.MasterPages
     {
         #region Public Properties Not Part of the Viewmodel
 
+        ///// <summary>
+        ///// Gets a value indicating if the MessageBox will be included in the page.
+        ///// If <see cref="MessageBox"/> is null, false is returned.
+        ///// </summary>
+        ///// <remarks>
+        ///// DevNote: The value is determined by the MessageBoxViewModel.ShowMessageBox.
+        ///// </remarks>
+        //[Bind(Direction.ServerToClient)]
+        //public bool ShowMessageBox => GetShowMessageBoxValue();
+
         /// <summary>
         /// The UserId of the logged-in user.
         /// </summary>
@@ -17,6 +27,11 @@ namespace BasicEcx.MasterPages
         #endregion Public Properties Not Part of the Viewmodel
 
         #region ViewModel Properties
+
+        ///// <summary>
+        ///// The MessageBox control.
+        ///// </summary>
+        //public MessageBoxViewModel MessageBox { get; set; }
 
         /// <summary>
         /// The title of the page.
@@ -73,9 +88,6 @@ namespace BasicEcx.MasterPages
         /// <summary>
         /// Occurs 3rd, after Init()
         /// </summary>
-        /// <remarks>
-        /// DevNote: The PageParameter variables are set and can be used now.
-        /// </remarks>
         public override Task Load()
         {/* Occurs third */
             
@@ -99,7 +111,7 @@ namespace BasicEcx.MasterPages
 
         #endregion Page Lifecycle Methods
 
-        #region Public Virtual Methods
+        #region Virtual Methods
 
         /// <summary>
         /// Set up the context items for the page.
@@ -126,9 +138,17 @@ namespace BasicEcx.MasterPages
         /// </remarks>
         protected virtual void InitializeView() { }
 
-        #endregion Public Virtual Methods
+        #endregion Virtual Methods
 
         #region Public Methods
+
+        ///// <summary>
+        ///// Returns the value of the <see cref="MessageBoxViewModel.ShowMessageBox"/>.
+        ///// </summary>
+        //public bool GetShowMessageBoxValue()
+        //{
+        //    return MessageBox != null && MessageBox.ShowMessageBox;
+        //}
 
         /// <summary>
         /// Sets the title for the page on both the browser tab and in the TitleBar.
@@ -141,6 +161,28 @@ namespace BasicEcx.MasterPages
         }
 
         #endregion Public Methods
+
+        #region Private Methods
+
+        ///// <summary>
+        ///// Display the MessageBox if there is a OneTimeMessage to show.
+        ///// </summary>
+        //private void ShowOneTimeMessageIfNeeded()
+        //{
+        //    if (string.IsNullOrEmpty(MessageKey))
+        //        return;
+
+        //    if (!string.IsNullOrEmpty(MessageKeyArgs))
+        //    {
+        //        MessageBox.ShowSuccessOneTime(MessageKey, MessageKeyArgs.Split(','));
+        //    }
+        //    else
+        //    {
+        //        MessageBox.ShowSuccessOneTime(MessageKey);
+        //    }
+        //}
+
+        #endregion Private Methods
     }
 }
 

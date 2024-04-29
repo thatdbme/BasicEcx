@@ -1,4 +1,5 @@
-﻿using DotVVM.Framework.Configuration;
+﻿using DotVVM.BusinessPack;
+using DotVVM.Framework.Configuration;
 using DotVVM.Framework.Controls.Bootstrap4;
 using DotVVM.Framework.ResourceManagement;
 using DotVVM.Framework.Routing;
@@ -23,6 +24,14 @@ namespace BasicEcx
             config.Diagnostics.CompilationPage.IsApiEnabled = true;
         }
 
+        public void ConfigureServices(IDotvvmServiceCollection services)
+        {
+            //services.Services.AddSingleton<ICookieManager, DotvvmSystemWebCookieManager>();
+            services.AddDefaultTempStorages("Temp");
+            services.AddBusinessPack(theme: BusinessPackTheme.Bootstrap4);
+            //services.AddHotReload(); // Not sure what this does, it was in the default-created file.
+        }
+
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
             config.RouteTable.Add("Default", "", "Views/default.dothtml");
@@ -32,7 +41,7 @@ namespace BasicEcx
 
         private void ConfigureControls(DotvvmConfiguration config, string applicationPath)
         {
-            // auto-register all .dotcontrol files that are children of the Dotvvm/Controls folder
+            // auto-register all .dotcontrol files that are children of the /Controls folder
             config.Markup.AutoDiscoverControls(new DefaultControlRegistrationStrategy(config, "ecx", "Controls"));
 
             // register code-only controls and markup controls
@@ -47,11 +56,5 @@ namespace BasicEcx
             });
         }
 		
-		public void ConfigureServices(IDotvvmServiceCollection options)
-        {
-            options.AddDefaultTempStorages("temp");
-            options.AddBusinessPack();
-            options.AddHotReload();
-		}
     }
 }

@@ -51,8 +51,8 @@ html, body {
 }
 
     .content__links-list li {
-        list-style-type: none;
-        display: inline-block;
+        /*list-style-type: none;
+        display: inline-block;*/
         margin: 0 1rem;
     }
 
@@ -107,4 +107,52 @@ html, body {
     transition: all 0.3s;
     padding: 0.5rem;
     padding-top: 55px;
+}
+
+
+.validation-label {
+    display: inline;
+    padding: 2px 6px 3px !important;
+    font-size: .9em;
+    line-height: 24px;
+    color: #ffffff;
+    text-align: left;
+    white-space: nowrap;
+    border-radius: .25em;
+    vertical-align: middle;
+}
+
+.label-danger {
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+
+.has-error {
+    /*font-weight: bold;*/
+    color: red;
+}
+
+.field-label:not(.has-error *) {
+    white-space: nowrap;
+    /*text-align: right;*/
+    font-size: .85714286em;
+    line-height: 2.57142857em;
+    font-weight: 500;
+}
+
+.ErrorText {
+    border: 1px #E5E5E5 solid;
+    color: #000000;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ErrorHighlight {
+    color: red;
 }

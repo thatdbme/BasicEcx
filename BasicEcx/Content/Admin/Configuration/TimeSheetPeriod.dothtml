@@ -6,7 +6,23 @@
 
 </dot:Content>
 <dot:Content ContentPlaceHolderID="AdminContent">
-    
+
+    <div class="container-fluid" Validator.SetToolTipText>
+
+        <ecx:FieldDate DataContext="{value: StartDate}" />
+
+        <ecx:FieldDateB DataContext="{value: EndDate}"
+                        IsRequired="{value: IsRequired}"
+                        SelectedDate="{value: SelectedDate}"
+                        LabelText="{value: LabelText}"
+                        RequiredText="{value: RequiredText}" />
+
+        <ecx:FieldComboBox DataContext="{value: Frequency}" />
+
+        <ecx:FieldComboBox DataContext="{value: Cycle}" />
+
+    </div>
+
 
 </dot:Content>
 <dot:Content ContentPlaceHolderID="PageSpecificJavaScriptContent">

@@ -1,0 +1,25 @@
+@viewModel BasicEcx.Controls.Fields.Date.Model.FieldDateViewModel, BasicEcx
+@baseType BasicEcx.Controls.Fields.Date.FieldDateB, BasicEcx
+
+@noWrapperTag !
+<!-- Begin FieldDateControl Version B ToDo DVM: Remove this comment -->
+<div class="row align-items-baseline mt-1 mb-1"
+     Validator.InvalidCssClass="has-error"
+     Validator.Value="{value: _control.SelectedDate}">
+
+    <div class="col-sm-4 col-md-3 col-xl-2 text-sm-right" style="">
+        <span class="field-label">{{resource: _control.LabelText}}</span>
+    </div>
+    <div class="col-sm-8 col-md-9 col-xl-10" style="">
+        <bp:DatePicker SelectedDate="{value: _control.SelectedDate}"
+                       AllowUnselect="false"
+                       <%--MinDate="{value: _control.MinDate}"
+                       MaxDate="{value: _control.MaxDate}"--%> />
+        <dot:Validator Value="{value: _control.SelectedDate}">
+            <span Visible="{value: _control.IsRequired && _control.SelectedDate != null}">*</span>
+        </dot:Validator>
+        <span class="validation-label label-danger"
+              Visible="{value: _control.IsRequired && _control.SelectedDate  == null}">{{resource: _control.RequiredText}}</span>
+    </div>
+</div>
+<!-- End FieldDateControl Version B ToDo DVM: Remove this comment -->

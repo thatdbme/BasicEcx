@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title></title>
+    <title>{{resource: PageTitle}}</title>
     <dot:RequiredResource Name="bootstrap" />
     <dot:RequiredResource Name="Styles" />
 
@@ -25,9 +25,9 @@
 
         <div ID="PageContent">
             <div ID="TopContentWrap" class="TopContentWrap">
-                <%--<ecx:MessageBox ID="MessageBox" DataContext="{value: MessageBox}" Visible="{value: _parent.ShowMessageBox}" Visible="{value: _page.EvaluatingOnClient}" />--%>
+                <%--<ecx:MessageBox ID="MessageBox" DataContext="{value: MessageBox}" Visible="{value: _page.EvaluatingOnClient}" />--%>
                 <ecx:TitleBar ID="TitleBar" DataContext="{value: TitleBar}" <%--IncludeInPage="{resource: _parent.ShowTitleBar}"--%> />
-                <%--<ecx:ViewBar ID="ViewBar" IncludeInPage="{resource: ShowViewBar}" />--%>
+                
             </div>
             <div ID="ContentWrap" style="padding-top: 60px;">
                 <dot:ContentPlaceHolder ID="LayoutMainContent" />

@@ -3,19 +3,20 @@
 <dot:Content ContentPlaceHolderID="MainContent">
 
     <div class="content">
-        
+
         <div class="content__text">
             <h1>{{value: Title}}</h1>
 
-            <p>This sample site contains the basic ECx project structure and some of its pages and controls.</p>
+            <p>This project contains the basic ECx project structure and some of its pages and controls.</p>
 
             <h3>Page Links</h3>
             <ul class="content__links-list">
+                <li><a href="/_dotvvm/diagnostics/compilation">_dotvvm/diagnostics/compilation</a></li>
                 <li><dot:RouteLink RouteName="Admin_Configuration_TimeSheetPeriod">Admin/Configuration/TimeSheetPeriod</dot:RouteLink></li>
-                
+
             </ul>
         </div>
 
-        
+
     </div>
 </dot:Content>

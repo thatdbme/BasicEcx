@@ -25,6 +25,7 @@
         <div id="TitleBarActions" class="{resource: TitleBarActionsCssString}" <%--class="collapse navbar-collapse titleBarActions"--%>>
             <div class="ml-auto"></div>
             <div class="navbar-nav align-items-end">
+
                 <!--PageNavLinks-->
                 <dot:Repeater ID="PageNavLinks" DataContext="{value: NavLinks}" DataSource="{value: _parent.NavLinks}" RenderWrapperTag="false" RenderSettings.Mode="Server">
                     <ItemTemplate>
@@ -34,16 +35,27 @@
                     </ItemTemplate>
                 </dot:Repeater>
                 <!--END PageNavLinks-->
-                <!--TabActions-->
-                <%--<asp:Panel runat="server" CssClass="nav-item pt-1" ID="PageTabActions" />--%>
-                <!-- ToDo DVM: Rename this to TabActions after we know it's fully working -->
+
+                <!--TabActions-->                
                 <dot:Repeater ID="PageTabActions" class="nav-item pt-1" DataContext="{value: TabActions}" DataSource="{value: _root.TabActions}">
                     <ItemTemplate>
-                        <%-- This way causes error --%>
-                        <%--<dot:Button Text="{value: _this.Text}" class="{value: _this.CssClass}" Click="{command: _root.PageTabActionButtonClick(_this)}"
-                                    Validation.Enabled="{resource: !_this.SkipPageValidation}"></dot:Button>--%>
+                        <!-- Created by one-button option; this is what we're tyring to get to work. -->
+                        <dot:Button Text="{value: _this.Text}" <%--class="{value: _this.CssClass}"--%> Click="{command: _root.PageTabActionButtonClick(_this)}"
+                                    class="btn btn-outline-secondary btn-sm ml-1"
+                                    
+                                    <%-- Uncommenting this line will cause an error on page load. 
+                                         Commented out, the page loads but Validate() is never called. --%>
+                                    <%--Validation.Enabled="{resource: !_this.SkipPageValidation}"--%>
 
-                        <%-- Having two works but is annoying and extra work--Question posted, wiating for response --%>
+                                    <%--Validation.Target="{value: true ? _this : _root.Decoy}"--%>
+                                    <%--Validation.Target="{value: true ? _root : _root.Decoy}"--%>
+                                    <%--Validation.Target="{value: true ? _page : _root.Decoy}"--%>
+                                    
+                                    ></dot:Button>
+                        
+                        <%-- When the above button is uncommented, there will be two sets of buttons. The first set is the created by the above, second below. --%>
+
+                        <!-- Created by two-button option; this is what we want to get away from. -->
                         <dot:Button Text="{value: _this.Text}" class="{value: _this.CssClass}" Click="{command: _root.PageTabActionButtonClick(_this)}"
                                     Validation.Enabled="true" IncludeInPage="{value: !_this.SkipPageValidation}"></dot:Button>
                         <dot:Button Text="{value: _this.Text}" class="{value: _this.CssClass}" Click="{command: _root.PageTabActionButtonClick(_this)}"
@@ -52,8 +64,8 @@
                     </ItemTemplate>
                 </dot:Repeater>
                 <!--END TabActions-->
+
                 <!--PageActions-->
-                <%--<asp:Panel runat="server" CssClass="nav-item pt-1" ID="PageActions" />--%>
                 <dot:Repeater ID="PageActions" class="nav-item pt-1" DataContext="{value: PageActions}" DataSource="{value: _root.PageActions}">
                     <ItemTemplate>
                         <dot:Button Text="{value: _this.Text}" class="{value: _this.CssClass}" Click="{command: _root.PageActionButtonClick(_this)}"
@@ -63,9 +75,9 @@
                     </ItemTemplate>
                 </dot:Repeater>
                 <!--END PageActions-->
+
                 <!--MoreActionsMenu-->
-                <div id="MoreActionsDiv" class="nav-item pl-1 pt-1" <%--DataContext="{value: MoreActions}"--%> IncludeInPage="{resource: _root.MoreActions != null}">
-                    <%--<econometrix:ButtonMenuControl ID="MoreActionsMenu" runat="server" Visible="True" OpenMenuOnMouseEnter="False" CssClassFormatStringOverrideValue="btn btn-secondary dropdown-toggle btn-sm" />--%>
+                <div id="MoreActionsDiv" class="nav-item pl-1 pt-1" <%--DataContext="{value: MoreActions}"--%> IncludeInPage="{resource: _root.MoreActions != null}">                    
                     <div class="dropdown">
                         <button class="btn dropdown-toggle btn-secondary btn-sm" style="overflow: visible; position: relative;" type="button" aria-haspopup="true" data-toggle="dropdown">{{resource: MoreActionsMenuText}}</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -83,6 +95,7 @@
                     </div>
                 </div>
                 <!--END MoreActionsMenu-->
+
             </div><%--END navbar-nav END--%>
         </div><%--END collapse navbar-collapse END--%>
     </nav><%--END TitleBarNav END--%>
