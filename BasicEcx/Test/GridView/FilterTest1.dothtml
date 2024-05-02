@@ -1,0 +1,44 @@
+﻿@viewModel BasicEcx.Test.GridView.FilterTest1ViewModel, BasicEcx
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GridView Filtering Test Page 1</title>
+</head>
+<body>
+
+    <p>This page tests filtering on the bp:GridView.</p>
+    <p>It is based on <a href="https://www.dotvvm.com/docs/4.0/controls/businesspack/GridView#sample12" target="_blank">Sample 12</a>.</p>
+
+    <bp:GridView DataSource="{value: Customers}"
+                 FilterPlacement="SeparateHeaderRow">
+        <Columns>
+            <bp:GridViewTextColumn Value="{value: Name}"
+                                   HeaderText="Name"
+                                   AllowFiltering />
+            <bp:GridViewTextColumn Value="{value: Orders}"
+                                   HeaderText="Orders"
+                                   AllowFiltering>
+                <FilterTemplate>
+                    <bp:TextBox Text="{value: _root.OrderFilter}"
+                                Changed="{command: _root.OnOrderFilterChanged()}" />
+                </FilterTemplate>
+            </bp:GridViewTextColumn>
+            <bp:GridViewTextColumn Value="{value: Id}"
+                                   HeaderText="Customer ID"
+                                   AllowFiltering />
+            <bp:GridViewDateTimeColumn Value="{value: BirthDate}"
+                                       FormatString="MM-dd-yyyy"
+                                       HeaderText="Birthdate"
+                                       AllowFiltering />
+        </Columns>
+    </bp:GridView>
+
+    <br />
+
+</body>
+</html>
+
+

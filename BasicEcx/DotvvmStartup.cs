@@ -37,6 +37,7 @@ namespace BasicEcx
             config.RouteTable.Add("Default", "", "Views/default.dothtml");
             config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));
             config.RouteTable.AutoDiscoverRoutes(new DotvvmRouteStrategyEcxContent(config));
+            config.RouteTable.AutoDiscoverRoutes(new DotvvmRouteStrategyEcxContent(config,"Test"));
         }
 
         private void ConfigureControls(DotvvmConfiguration config, string applicationPath)

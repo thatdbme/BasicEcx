@@ -48,23 +48,23 @@
     <Reference Include="DotVVM.BusinessPack.Core, Version=4.2.0.0, Culture=neutral, PublicKeyToken=77e8efd43b7ae75f, processorArchitecture=MSIL">
       <HintPath>..\packages\DotVVM.BusinessPack.Core.4.2.0\lib\net472\DotVVM.BusinessPack.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DotVVM.Core, Version=4.2.0.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotVVM.Core.4.2.0\lib\net472\DotVVM.Core.dll</HintPath>
+    <Reference Include="DotVVM.Core, Version=4.2.6.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotVVM.Core.4.2.6\lib\net472\DotVVM.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DotVVM.Framework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotVVM.4.2.0\lib\net472\DotVVM.Framework.dll</HintPath>
+    <Reference Include="DotVVM.Framework, Version=4.2.6.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotVVM.4.2.6\lib\net472\DotVVM.Framework.dll</HintPath>
     </Reference>
     <Reference Include="DotVVM.Framework.Controls.Bootstrap, Version=4.2.0.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
       <HintPath>..\packages\DotVVM.Controls.Bootstrap4.4.2.0\lib\net472\DotVVM.Framework.Controls.Bootstrap.dll</HintPath>
     </Reference>
-    <Reference Include="DotVVM.Framework.Hosting.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotVVM.Owin.4.2.0\lib\net472\DotVVM.Framework.Hosting.Owin.dll</HintPath>
+    <Reference Include="DotVVM.Framework.Hosting.Owin, Version=4.2.6.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotVVM.Owin.4.2.6\lib\net472\DotVVM.Framework.Hosting.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="DotVVM.HotReload, Version=4.2.0.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotVVM.HotReload.4.2.0\lib\net472\DotVVM.HotReload.dll</HintPath>
+    <Reference Include="DotVVM.HotReload, Version=4.2.6.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotVVM.HotReload.4.2.6\lib\net472\DotVVM.HotReload.dll</HintPath>
     </Reference>
-    <Reference Include="DotVVM.HotReload.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotVVM.HotReload.Owin.4.2.0\lib\net472\DotVVM.HotReload.Owin.dll</HintPath>
+    <Reference Include="DotVVM.HotReload.Owin, Version=4.2.6.0, Culture=neutral, PublicKeyToken=23f3607db32275da, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotVVM.HotReload.Owin.4.2.6\lib\net472\DotVVM.HotReload.Owin.dll</HintPath>
     </Reference>
     <Reference Include="DotVVM.Utils.HtmlElements, Version=4.2.0.0, Culture=neutral, PublicKeyToken=77e8efd43b7ae75f, processorArchitecture=MSIL">
       <HintPath>..\packages\DotVVM.Utils.HtmlElements.4.2.0\lib\net472\DotVVM.Utils.HtmlElements.dll</HintPath>
@@ -211,6 +211,8 @@
     <Compile Include="Shared\MenuItem.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="Test\GridView\FilterTest2ViewModel.cs" />
+    <Compile Include="Test\GridView\FilterTest1ViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
   </ItemGroup>
@@ -222,10 +224,10 @@
     <Content Include="Controls\Fields\ComboBox\FieldComboBox.dotcontrol" />
     <Content Include="Controls\Fields\Date\FieldDate.dotcontrol" />
     <Content Include="Controls\Fields\Date\FieldDateB.dotcontrol" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="GettingStarted.html" />
     <Content Include="Resources\Images\text.svg" />
     <Content Include="Resources\Images\tree.svg" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -236,9 +238,11 @@
     <Content Include="Web.config" />
     <Content Include="Views\Default.dothtml" />
     <None Include="packages.config" />
+    <Content Include="Views\MasterPage.dotmaster" />
+    <Content Include="Test\GridView\FilterTest1.dothtml" />
+    <Content Include="Test\GridView\FilterTest2.dothtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\MasterPage.dotmaster" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -247,10 +251,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\DotVVM.4.2.0\analyzers\dotnet\cs\DotVVM.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\DotVVM.4.2.0\analyzers\dotnet\cs\DotVVM.Analyzers.dll" />
+    <Analyzer Include="..\packages\DotVVM.4.2.6\analyzers\dotnet\cs\DotVVM.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\DotVVM.4.2.6\analyzers\dotnet\cs\DotVVM.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

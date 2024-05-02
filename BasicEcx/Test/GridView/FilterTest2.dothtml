@@ -1,0 +1,109 @@
+﻿@viewModel BasicEcx.Test.GridView.FilterTest2ViewModel, BasicEcx
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GridView Filtering Test Page 2</title>
+</head>
+<body>
+
+    <p>This page tests filtering on the bp:GridView.</p>
+    <p>
+        It is based on
+        <a href="https://www.dotvvm.com/docs/4.0/controls/businesspack/GridView#sample13" target="_blank">Sample 13</a> in the documentation.
+        However it includes the following modifications:
+        <ol>
+            <li>The "Name with only Contains operator" uses a different Value property so it is not tied to the Name column and can be filtered seperately.</li>
+            <li>Replaced the "Has premium support" column with "bool filter but can be used" with normal bool filtering as there is no way to use the original column filter.</li>
+            <li>Marked some "HasPremimumSupport" values as true so filtering has records to operate on.</li>
+            <li>Included the "Birthdate" column in the grid with normal date filtering.</li>
+            <li>Hid the "Number of orders" column.</li>
+        </ol>
+    </p>
+    <p>
+        Note the following issues found with filtering on the bp:GridView:
+        <ol>
+            <li>
+                Date Filtering - Clicking a date in the calendar does not select the date.<br />
+                You must use the Tab key or Enter key to apply the selected date the first time.<br />
+                Once you've done that, changing the date works by simply clicking a different date.
+            </li>
+            <li>
+                Date Filtering - Due the above issue, it is not possible to select a date for filtering on a mobile device.
+            </li>
+            <li>
+                Date Filtering - Clicking inside the date text box does not open the calendar for easy use.<br />
+                You must click the little icon.
+            </li>
+            <li>
+                Date Filtering - Using the calendar to select a date returns that date set at the current hour of the day instead of midnight on that date.<br />
+                Typing the date returns midnight, as you'd expect.<br />
+            </li>
+            <li>
+                Bool Filtering - After selecting either "Is checked" or "Is not checked", there is no way to clear that filter.<br />
+                Clicking the provided clearing X does not work. You must refresh the page to get rid of it.
+            </li>
+
+        </ol>
+    </p>
+
+    <bp:GridView DataSource="{value: Customers}"
+                 FilterPlacement="SeparateHeaderRow">
+        <!-- This will only allow Starts with and Ends with operators on all columns with string values in them. -->
+        <StringOperators>
+            <op:StartsWithOperator DisplayName="Starts with" />
+            <op:EndsWithOperator DisplayName="Ends with" />
+        </StringOperators>
+        <!-- This will only allow filtering by true value on all columns with boolean values. -->
+        <%--<BooleanOperators>
+            <op:TrueOperator DisplayName="Is true" />
+        </BooleanOperators>--%>
+        <Columns>
+            <!-- This column will use filtering operators specified in the GridView StringOperators collection above -->
+            <bp:GridViewTextColumn Value="{value: Name}"
+                                   HeaderText="Name"
+                                   AllowFiltering />
+
+            <!-- This column will use filtering operators specified in its own StringOperators collection  -->
+            <bp:GridViewTextColumn Value="{value: Name2}"
+                                   HeaderText="Name with only Contains operator"
+                                   AllowFiltering>
+                <StringOperators>
+                    <op:ContainsOperator DisplayName="Contains" />
+                </StringOperators>
+            </bp:GridViewTextColumn>
+
+            <!-- This columns will use default filtering operators from the NumberOperators collection  -->
+            <%--<bp:GridViewTextColumn Value="{value: Orders}"
+                                   HeaderText="Number of orders"
+                                   AllowFiltering />--%>
+
+            <!-- This column will use filtering operators specified in the GridView BooleanOperators collection -->
+            <!--<bp:GridViewCheckBoxColumn Value="{value: HasPremiumSupport}"
+                                       HeaderText="bool filter"
+                                       AllowFiltering>-->
+            <%--This will only allow filtering by true value. Note that you can't actually use it this way.--%>
+            <!--<BooleanOperators>
+                    <op:TrueOperator DisplayName="Is true" />
+                </BooleanOperators>
+            </bp:GridViewCheckBoxColumn>-->
+            <!-- This column will use filtering operators specified in the GridView BooleanOperators collection -->
+            <bp:GridViewCheckBoxColumn Value="{value: HasPremiumSupport}"
+                                       HeaderText="bool filter but can be used"
+                                       AllowFiltering />
+
+            <bp:GridViewDateTimeColumn Value="{value: BirthDate}"
+                                       FormatString="MM/dd/yyyy"
+                                       HeaderText="Birthdate"
+                                       AllowFiltering />
+        </Columns>
+    </bp:GridView>
+
+    <br />
+
+</body>
+</html>
+
+

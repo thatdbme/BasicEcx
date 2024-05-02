@@ -9,10 +9,19 @@
 
             <p>This project contains the basic ECx project structure and some of its pages and controls.</p>
 
-            <h3>Page Links</h3>
+            <h3>ECx Pages</h3>
             <ul class="content__links-list">
                 <li><a href="/_dotvvm/diagnostics/compilation">_dotvvm/diagnostics/compilation</a></li>
                 <li><dot:RouteLink RouteName="Admin_Configuration_TimeSheetPeriod">Admin/Configuration/TimeSheetPeriod</dot:RouteLink></li>
+
+            </ul>
+
+
+            <h3>Test Pages</h3>
+            <ul class="content__links-list">
+
+                <li><dot:RouteLink RouteName="GridView_FilterTest1">Test/GridView/FilterTest1</dot:RouteLink> - test based on Filtering sample #12</li>
+                <li><dot:RouteLink RouteName="GridView_FilterTest2">Test/GridView/FilterTest2</dot:RouteLink> - test based on Filtering sample #13</li>
 
             </ul>
         </div>
