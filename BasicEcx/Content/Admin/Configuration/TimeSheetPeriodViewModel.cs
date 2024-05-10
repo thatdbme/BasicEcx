@@ -1,4 +1,5 @@
 ﻿using BasicEcx.BusinessObjects;
+using BasicEcx.Common.Navigation;
 using BasicEcx.Controls.Fields.ComboBox.Model;
 using BasicEcx.Controls.Fields.Date.Model;
 using BasicEcx.Models;
@@ -214,45 +215,57 @@ namespace BasicEcx.Content.Admin.Configuration
                 return;
 
             SetPageTitle("Create Timesheet Period");
+
+            var navLinkHome = new NavPageViewModel
+            {
+                Url = "/",
+                ResourceKey = "Home"
+            };
+
+            TitleBar.AddNavLink(navLinkHome);
+
         }
 
         #endregion Private Methods
-    }
 
-    #region Fake Helper objects
+        #region Fake Helper objects
 
 
-    public class FakeController
-    {
-        public void CreateTimesheetPeriod(TimeSheetPeriodModel dummy){}
-
-        public TimeSheetPeriodModel GetTimesheetPeriod(bool dummy)
+        public class FakeController
         {
-            var model = new TimeSheetPeriodModel
-            {
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now,
-                TimeSheetFrequencyId = Constants.TimeSheetFrequency.WEEKLY,
-                TimeSheetCycleList = new Dictionary<string, string>
-                {
-                    { "1", "Week Ending - Sunday" },
-                    { "4", "Week Ending - Thursday" },
-                    { "7", "Week Ending - Monday" }
-                },
-                TimeSheetFrequencyList = new Dictionary<string, string>
-                {
-                    { "3", "Bi-Weekly" },
-                    { "2", "Monthly" },
-                    { "4", "Semi-Monthly" },
-                    { "1", "Weekly" }
-                }
-            };
+            public void CreateTimesheetPeriod(TimeSheetPeriodModel dummy) { }
 
-            return model;
+            public TimeSheetPeriodModel GetTimesheetPeriod(bool dummy)
+            {
+                var model = new TimeSheetPeriodModel
+                {
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    TimeSheetFrequencyId = Constants.TimeSheetFrequency.WEEKLY,
+                    TimeSheetCycleList = new Dictionary<string, string>
+                    {
+                        { "1", "Week Ending - Sunday" },
+                        { "4", "Week Ending - Thursday" },
+                        { "7", "Week Ending - Monday" }
+                    },
+                    TimeSheetFrequencyList = new Dictionary<string, string>
+                    {
+                        { "3", "Bi-Weekly" },
+                        { "2", "Monthly" },
+                        { "4", "Semi-Monthly" },
+                        { "1", "Weekly" }
+                    }
+                };
+
+                return model;
+            }
         }
+
+
+        #endregion Fake Helper objects
+
     }
 
 
-    #endregion Fake Helper objects
 
 }

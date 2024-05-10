@@ -26,8 +26,85 @@
         <div ID="PageContent">
             <div ID="TopContentWrap" class="TopContentWrap">
                 <%--<ecx:MessageBox ID="MessageBox" DataContext="{value: MessageBox}" Visible="{value: _page.EvaluatingOnClient}" />--%>
-                <ecx:TitleBar ID="TitleBar" DataContext="{value: TitleBar}" <%--IncludeInPage="{resource: _parent.ShowTitleBar}"--%> />
-                
+                <!--<ecx:TitleBar ID="TitleBar" DataContext="{value: TitleBar}"--> <%--IncludeInPage="{resource: _parent.ShowTitleBar}"--%> <!--/>-->
+                <!-- Start of inlined ValidationMessage -->
+                <%-- ToDo: DVM: Build the inlinied ValidationMessage in Layout.dotmaster. --%>
+                <!-- End of inlined ValidationMessage -->
+                <%-- Start of inlined TitleBar --%>
+                <div id="TitleBarContent" DataContext="{value: TitleBar}" IncludeInPage="{value: ShowTitleBar}">
+                    <nav ID="TitleBarNav" class="{resource: TitleBarNavCssString}" <%--class="navbar navbar-expand-md navbar-light bg-light"--%>>
+
+                        <div ID="TitleDisplay" class="navbar-brand titleBarTitle9"
+                             data-toggle="tooltip"
+                             data-trigger="hover"
+                             data-delay="{resource: TooltipDataDelayValue}"
+                             data-placement="auto"
+                             data-offset="10% 0"
+                             title="{value: TitleText}">{{value: TitleText}}</div>
+
+                        <button ID="TitleBarToggler" class="navbar-toggler collapseBtn" type="button"
+                                IncludeInPage="{resource: DisplayTitleBarToggler}"
+                                data-toggle="collapse" data-target="#TitleBarActions"
+                                aria-controls="TitleBarActions" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <div id="TitleBarActions" class="{resource: TitleBarActionsCssString}">
+                            <div class="ml-auto"></div>
+                            <div class="navbar-nav align-items-end">
+
+                                <%--PageNavLinks--%>
+                                <dot:Repeater ID="PageNavLinks" DataContext="{value: NavLinks}" DataSource="{value: _parent.NavLinks}" RenderWrapperTag="false" RenderSettings.Mode="Server">
+                                    <ItemTemplate>
+                                        <div class="nav-item">
+                                            <a href="{resource: _this.Url}" class="{resource: _this.CssClass}">{{resource: _this.Text}}</a>
+                                        </div>
+                                    </ItemTemplate>
+                                </dot:Repeater>
+                                <%--END PageNavLinks--%>
+
+                                <%--TabActions--%>
+                                <%-- ToDo DVM: Rename this to TabActions after we know it's fully working --%>
+                                <dot:Repeater ID="PageTabActions" class="nav-item pt-1" DataContext="{value: TabActions}" DataSource="{value: _parent.TabActions}">
+                                    <ItemTemplate>
+                                        <dot:Button Text="{value: _this.Text}" class="{value: _this.CssClass}" Click="{command: _parent2.PageTabActionButtonClick(_this)}"
+                                                    Validation.Target="{value: !_this.SkipPageValidation ? _root : _root.Decoy}">
+                                        </dot:Button>
+                                    </ItemTemplate>
+                                </dot:Repeater>
+                                <%--END TabActions--%>
+
+                                <%--PageActions--%>
+                                <dot:Repeater ID="PageActions" class="nav-item pt-1" DataContext="{value: PageActions}" DataSource="{value: _parent.PageActions}">
+                                    <ItemTemplate>
+                                        <dot:Button Text="{value: _this.Text}" class="{value: _this.CssClass}" Click="{command: _parent2.PageActionButtonClick(_this)}"
+                                                    Validation.Target="{value: !_this.SkipPageValidation ? _root : _root.Decoy}">
+                                        </dot:Button>
+                                    </ItemTemplate>
+                                </dot:Repeater>
+                                <%--END PageActions--%>
+
+                                <%--MoreActionsMenu--%>
+                                <div id="MoreActionsDiv" class="nav-item pl-1 pt-1" IncludeInPage="{resource: MoreActions != null}">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle btn-secondary btn-sm" style="overflow: visible; position: relative;" type="button" aria-haspopup="true" data-toggle="dropdown">{{resource: MoreActionsMenuText}}</button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <dot:Repeater ID="MoreActionsMenuItems" RenderWrapperTag="false" DataSource="{value: MoreActions}">
+                                                <bs:DropDownButtonItem Click="{command: _parent.MoreActionsMenuItemClick(_this)}" Text="{value: _this.Text}" class="dropdown-item"
+                                                                       Validation.Target="{value: !_this.SkipPageValidation ? _root : _root.Decoy}">
+                                                </bs:DropDownButtonItem>
+                                            </dot:Repeater>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%--END MoreActionsMenu--%>
+
+                            </div><%--END navbar-nav END--%>
+                        </div><%--END collapse navbar-collapse END--%>
+                    </nav><%--END TitleBarNav END--%>
+                </div>
+                <%-- End of inlined TitleBar --%>
+
             </div>
             <div ID="ContentWrap" style="padding-top: 60px;">
                 <dot:ContentPlaceHolder ID="LayoutMainContent" />

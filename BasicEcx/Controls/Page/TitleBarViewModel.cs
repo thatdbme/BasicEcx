@@ -23,10 +23,10 @@ namespace BasicEcx.Controls.Page
 
         #region Public Properties
 
-        /// <summary>
-        /// Fake object to bypass validation.
-        /// </summary>
-        public object Decoy { get; set; } = new object();
+        ///// <summary>
+        ///// Fake object to bypass validation.
+        ///// </summary>
+        //public object Decoy { get; set; } = new object();
 
         /// <summary>
         /// The list of More Actions.
@@ -63,6 +63,17 @@ namespace BasicEcx.Controls.Page
         /// </summary>
         [Bind(Direction.ServerToClient)]
         public List<TitleBarButton> PageActions { get; private set; }
+
+        /// <summary>
+        /// Returns a value indicating if the TitleBar should be shown on the page.
+        /// </summary>
+        /// <returns>
+        /// Returns true if the page assigned a TitleText or if there are any
+        /// NavLinks, TabActions, PageActions, or MoreActions items assigned.
+        /// If none of those conditions are met, false is returned.
+        /// </returns>
+        [Bind(Direction.ServerToClient)]
+        public bool ShowTitleBar => GetIsTitleBarVisible();
 
         /// <summary>
         /// The list of Tab Actions.
@@ -290,6 +301,31 @@ namespace BasicEcx.Controls.Page
             }
 
             return text;
+        }
+
+        /// <summary>
+        /// Returns a value indicating if the TitleBar should be shown on the page.
+        /// </summary>
+        /// <returns>
+        /// Returns true if the page assigned a TitleText or if there are any
+        /// NavLinks, TabActions, PageActions, or MoreActions items assigned.
+        /// If none of those conditions are met, false is returned.
+        /// </returns>
+        private bool GetIsTitleBarVisible()
+        {
+            if (!string.IsNullOrEmpty(TitleText))
+                return true;
+
+            if (NavLinks != null && NavLinks.Any())
+                return true;
+
+            if (TabActions != null && TabActions.Any())
+                return true;
+
+            if (PageActions != null && PageActions.Any())
+                return true;
+
+            return MoreActions != null && MoreActions.Any();
         }
 
         /// <summary>

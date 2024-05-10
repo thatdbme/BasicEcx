@@ -47,6 +47,12 @@ namespace BasicEcx.MasterPages
         [Bind()]
         public TitleBarViewModel TitleBar { get; set; }
 
+        /// <summary>
+        /// Fake object that does nothing.
+        /// It can be used as the target for validation or anything else that needs an object but doesn't need to do anything.
+        /// </summary>
+        public object Decoy { get; set; } = new object();
+
         #endregion ViewModel Properties
 
         #region Page Lifecycle Methods
