@@ -1,0 +1,22 @@
+﻿@viewModel BasicEcx.Content.Errors._ErrorsViewModel, BasicEcx
+@masterPage MasterPages/Layout.dotmaster
+
+<dot:Content ContentPlaceHolderID="HeaderContent">
+    <dot:ContentPlaceHolder ID="HeaderContent" />
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="LayoutMainContent">
+
+    <%-- Add contents here that should be shared by all pages in the Admin Area and visible prior to unique page content, if any. --%>
+
+    <%-- The name of this placeholder should match the Area --%>
+    <dot:ContentPlaceHolder ID="ErrorsContent" />
+
+    <%-- Add contents here that should be shared by all pages in the Area and visible after the unique page content, if any. --%>
+
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="PageSpecificJavaScriptContent">
+    <dot:ContentPlaceHolder ID="PageSpecificJavaScriptContent" />
+</dot:Content>
+

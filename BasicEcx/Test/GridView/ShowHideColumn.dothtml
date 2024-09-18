@@ -1,0 +1,178 @@
+﻿@viewModel BasicEcx.Test.GridView.ShowHideColumnViewModel, BasicEcx
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GridView Column Show/Hide Test Page</title>
+</head>
+<body>
+
+    <bp:SwitchButton Checked="{value: ShowDadJoke}" Text="Show dad joke" Click="{command: FakePostback()}" /><br />
+    <bp:SwitchButton Checked="{value: ShowRowSelection}" Text="Show row selection" Click="{command: FakePostback()}" />
+
+    <div style="padding: 15px; border: 2px solid blue;">
+        
+        <label>GridA1</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings1}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+            </Columns>
+        </bp:GridView>
+
+        <label>GridA2</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings1}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+                <bp:GridViewRowSelectColumn ColumnName="SelectionColumn" SelectedRows="{value: SelectedRowIds1}" ItemValueBinding="{value: Id}" Visible="{value: ShowRowSelection}" />
+            </Columns>
+        </bp:GridView>
+
+        <label>GridA3</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings1}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" Visible="{value: ShowDadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+                <bp:GridViewRowSelectColumn ColumnName="SelectionColumn" SelectedRows="{value: SelectedRowIds1}" ItemValueBinding="{value: Id}" Visible="{value: ShowRowSelection}" />
+            </Columns>
+        </bp:GridView>
+
+    </div>
+
+    <br />
+
+    <div style="padding: 15px; border: 2px solid red;">
+
+        <label>GridB1</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings2}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+            </Columns>
+        </bp:GridView>
+
+        <label>GridB2</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings2}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+                <bp:GridViewRowSelectColumn ColumnName="SelectionColumn" SelectedRows="{value: SelectedRowIds2}" ItemValueBinding="{value: Id}" />
+            </Columns>
+        </bp:GridView>
+
+    </div>
+
+    <br />
+    <bp:SwitchButton Checked="{value: ShowDadJoke}" Text="Show dad joke" Click="{command: FakePostback()}" /><br />
+    <bp:SwitchButton Checked="{value: ShowRowSelection}" Text="Show row selection" Click="{command: FakePostback()}" /><br />
+    <bp:SwitchButton Checked="{value: ShowIsEven}" Text="Show is even" Click="{command: FakePostback()}" /><br />
+    <bp:SwitchButton Checked="{value: ShowIsThird}" Text="Show is third" Click="{command: FakePostback()}" />
+
+    <div style="padding: 15px; border: 2px solid green;">
+
+        <label>GridC1</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings3}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+            </Columns>
+        </bp:GridView>
+
+        <label>GridC2</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings3}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+                <bp:GridViewRowSelectColumn ColumnName="SelectionColumn" SelectedRows="{value: SelectedRowIds2}" ItemValueBinding="{value: Id}" />
+            </Columns>
+        </bp:GridView>
+
+        <label>GridC3</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings3}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" Visible="{value: ShowIsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" Visible="{value: ShowDadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" Visible="{value: ShowIsThird}" />
+                <bp:GridViewRowSelectColumn ColumnName="SelectionColumn" SelectedRows="{value: SelectedRowIds2}" ItemValueBinding="{value: Id}" Visible="{value: ShowRowSelection}" />
+            </Columns>
+        </bp:GridView>
+
+    </div>
+
+    <br/>
+
+    <div style="padding: 15px; border: 2px solid black;">
+
+        <label>GridD1</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings4}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+            </Columns>
+        </bp:GridView>
+
+        <label>GridD2</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings4}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+                <bp:GridViewRowSelectColumn ColumnName="SelectionColumn" SelectedRows="{value: SelectedRowIds2}" ItemValueBinding="{value: Id}" />
+            </Columns>
+        </bp:GridView>
+
+        <label>GridD3</label>
+        <bp:GridView DataSource="{value: People}"
+                     UserSettings="{value: UserSettings4}">
+            <Columns>
+                <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+                <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" Visible="{value: ShowIsEven}" />
+                <bp:GridViewTextColumn ColumnName="FavoriteDadJoke" Value="{value: DadJoke}" Visible="{value: ShowDadJoke}" />
+                <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" Visible="{value: ShowIsThird}" />
+                <bp:GridViewRowSelectColumn ColumnName="SelectionColumn" SelectedRows="{value: SelectedRowIds2}" ItemValueBinding="{value: Id}" Visible="{value: ShowRowSelection}" />
+            </Columns>
+        </bp:GridView>
+
+    </div>
+</body>
+</html>

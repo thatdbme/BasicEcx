@@ -13,7 +13,7 @@
             <ul class="content__links-list">
                 <li><a href="/_dotvvm/diagnostics/compilation">_dotvvm/diagnostics/compilation</a></li>
                 <li><dot:RouteLink RouteName="Admin_Configuration_TimeSheetPeriod">Admin/Configuration/TimeSheetPeriod</dot:RouteLink></li>
-
+                <li><dot:RouteLink RouteName="Errors_PageNotFound">/Errors/PageNotFound</dot:RouteLink></li>
             </ul>
 
 
@@ -22,10 +22,11 @@
 
                 <li><dot:RouteLink RouteName="GridView_FilterTest1">Test/GridView/FilterTest1</dot:RouteLink> - test based on Filtering sample #12</li>
                 <li><dot:RouteLink RouteName="GridView_FilterTest2">Test/GridView/FilterTest2</dot:RouteLink> - test based on Filtering sample #13</li>
+                <li><dot:RouteLink RouteName="GridView_ShowHideColumn">Test/GridView/ShowHideColumn</dot:RouteLink> - testing showing/hiding columns, with/without RowSelectionColumn</li>
 
             </ul>
         </div>
-
+         <h3> need to add aspx to this project or start a new asp.net project and add DVM into it and then make it replace this whole thing if possible</h3>
 
     </div>
 </dot:Content>

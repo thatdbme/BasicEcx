@@ -14,8 +14,8 @@ namespace BasicEcx
     public class DotvvmRouteStrategyEcxContent : DefaultRouteStrategy
     {
         /// <summary>
-        /// Prepares routes for the ECX application in the DotvvmContent folder
-        /// All .dothtml files in DotvvmContent and its subfolders will be added to the RouteTable.
+        /// Prepares routes for the ECX application in the Content folder
+        /// All .dothtml files in Content and its subfolders will be added to the RouteTable.
         /// </summary>
         public DotvvmRouteStrategyEcxContent(DotvvmConfiguration configuration, string viewsFolder = "Content", string pattern = "*.dothtml")
             : base(configuration, viewsFolder, pattern)

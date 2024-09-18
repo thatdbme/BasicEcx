@@ -150,6 +150,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -189,11 +190,27 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspxPages\BasicWebForm.aspx.cs">
+      <DependentUpon>BasicWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxPages\BasicWebForm.aspx.designer.cs">
+      <DependentUpon>BasicWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxPages\NotFound.aspx.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxPages\NotFound.aspx.designer.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessObjects\Constants.cs" />
     <Compile Include="BusinessObjects\TimeSheetPeriodModel.cs" />
     <Compile Include="Common\Navigation\NavPageViewModel.cs" />
     <Compile Include="Content\Admin\Configuration\TimeSheetPeriodViewModel.cs" />
     <Compile Include="Content\Admin\_AdminViewModel.cs" />
+    <Compile Include="Content\Errors\PageNotFoundViewModel.cs" />
+    <Compile Include="Content\Errors\_ErrorsViewModel.cs" />
     <Compile Include="Controls\Fields\ComboBox\FieldComboBox.cs" />
     <Compile Include="Controls\Fields\ComboBox\Model\FieldComboBoxViewModel.cs" />
     <Compile Include="Controls\Fields\Date\FieldDate.cs" />
@@ -213,10 +230,13 @@
     <Compile Include="DotvvmStartup.cs" />
     <Compile Include="Test\GridView\FilterTest2ViewModel.cs" />
     <Compile Include="Test\GridView\FilterTest1ViewModel.cs" />
+    <Compile Include="Test\GridView\ShowHideColumnViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\MasterPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AspxPages\BasicWebForm.aspx" />
+    <Content Include="AspxPages\NotFound.aspx" />
     <Content Include="MasterPages\Layout.dotmaster" />
     <Content Include="Content\Admin\_Admin.dotmaster" />
     <Content Include="Content\Admin\Configuration\TimeSheetPeriod.dothtml" />
@@ -227,6 +247,8 @@
     <Content Include="GettingStarted.html" />
     <Content Include="Resources\Images\text.svg" />
     <Content Include="Resources\Images\tree.svg" />
+    <Content Include="Content\Errors\_Errors.dotmaster" />
+    <Content Include="Content\Errors\PageNotFound.dothtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -243,6 +265,7 @@
     <Content Include="Test\GridView\FilterTest2.dothtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Test\GridView\ShowHideColumn.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -254,6 +277,7 @@
     <Analyzer Include="..\packages\DotVVM.4.2.6\analyzers\dotnet\cs\DotVVM.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\DotVVM.4.2.6\analyzers\dotnet\cs\DotVVM.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
