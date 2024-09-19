@@ -23,6 +23,7 @@
                 <li><dot:RouteLink RouteName="GridView_FilterTest1">Test/GridView/FilterTest1</dot:RouteLink> - test based on Filtering sample #12</li>
                 <li><dot:RouteLink RouteName="GridView_FilterTest2">Test/GridView/FilterTest2</dot:RouteLink> - test based on Filtering sample #13</li>
                 <li><dot:RouteLink RouteName="GridView_ShowHideColumn">Test/GridView/ShowHideColumn</dot:RouteLink> - testing showing/hiding columns, with/without RowSelectionColumn</li>
+                <li><dot:RouteLink RouteName="GridView_RowSelectionColumn">Test/GridView/RowSelectionColumn</dot:RouteLink> - testing the RowSelectionColumn with a DataPager</li>
 
             </ul>
         </div>

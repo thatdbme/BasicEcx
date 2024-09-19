@@ -1,0 +1,87 @@
+﻿@viewModel BasicEcx.Test.GridView.RowSelectionColumnViewModel, BasicEcx
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>RowSelectionColumn test page</title>
+</head>
+<body>
+
+    <div>
+        <h4>Note the following:</h4>
+        <ul>
+            <li>Both gridviews have the same data and structure.</li>
+            <li>The red gridview pages at 5 items; the green gridview pages at 4 items.</li>
+            <li>The green gridview's total item count (12) divided by page size (4) divides evenly - each page has the same number of items.</li>
+            <li>The red gridview's total item count (12) divided by page size (5) does not divide evenly - the last page has fewer items than preceding pages.</li>
+        </ul>
+
+        <h4>Issues:</h4>
+        <ul>
+            <li>In both the red and green gridview, checking any row and then going to the next page will cause the same item on the next page to also be checked.</li>
+            <li>As a result of the previous item, in both grids, items not selected by the user are selected and included in the SelectedRowIds property.</li>
+            <li>In the red gridview (last page differs in length from others), when any item is checked and the last page is subsequently loaded, a javascript error is thrown on load.</li>
+        </ul>
+    </div>
+
+    <div style="padding: 15px; border: 2px solid red;">
+        <label>Item count does not divide into pages equally</label>
+        <bp:GridView DataSource="{value: PeopleRed}" UserSettings="{value: UserSettingsRed}">
+
+            <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+            <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+            <bp:GridViewTextColumn ColumnName="FavColor" Value="{value: FavColor}" />
+            <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+            <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+
+            <bp:GridViewRowSelectColumn ColumnName="SelectionColumn"
+                                        ItemValueBinding="{value: Id}"
+                                        SelectedRows="{value: SelectedRowIdsRed}" />
+
+        </bp:GridView>
+
+        <bp:DataPager DataSet="{value: PeopleRed}" />
+
+        <br />
+        <hr />
+
+        <h4>SelectedRowIds values:</h4>
+        <dot:Repeater DataSource="{value: SelectedRowIdsRed}" WrapperTagName="ul">
+            <li>{{value: _this}}</li>
+        </dot:Repeater>
+    </div>
+    <br />
+    <div style="padding: 15px; border: 2px solid green;">
+        <label>Item count divides into pages equally</label>
+        <bp:GridView DataSource="{value: PeopleGreen}" UserSettings="{value: UserSettingsGreen}">
+
+            <bp:GridViewNumericColumn ColumnName="Id" Value="{value: Id}" />
+            <bp:GridViewTextColumn ColumnName="Name" Value="{value: Name}" />
+            <bp:GridViewTextColumn ColumnName="FavColor" Value="{value: FavColor}" />
+            <bp:GridViewCheckBoxColumn ColumnName="IsEven" Value="{value: IsEven}" />
+            <bp:GridViewCheckBoxColumn ColumnName="IsThird" Value="{value: IsThird}" />
+
+            <bp:GridViewRowSelectColumn ColumnName="SelectionColumn"
+                                        ItemValueBinding="{value: Id}"
+                                        SelectedRows="{value: SelectedRowIdsGreen}" />
+
+        </bp:GridView>
+
+        <bp:DataPager DataSet="{value: PeopleGreen}" />
+
+        <br />
+        <hr />
+
+        <h4>SelectedRowIds values:</h4>
+        <dot:Repeater DataSource="{value: SelectedRowIdsGreen}" WrapperTagName="ul">
+            <li>{{value: _this}}</li>
+        </dot:Repeater>
+    </div>
+
+
+</body>
+</html>
+
+
